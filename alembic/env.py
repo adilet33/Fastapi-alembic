@@ -18,10 +18,11 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-#from app.models.user import User
-from app.db.base_class import Base
-target_metadata = Base.metadata
 
+
+from app.models.user import *
+from app.database.base_class import Base
+target_metadata = Base.metadata
 
 
 def run_migrations_offline() -> None:
