@@ -6,16 +6,12 @@ import uvicorn
 from fastapi import FastAPI
 
 
-
-
 app = FastAPI()
 
 
 @app.get('/')
 def get_hello():
     return {"message": 'Hello world'}
-
-
 
 
 if __name__ == "__main__":
