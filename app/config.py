@@ -3,7 +3,6 @@ from pydantic_settings import BaseSettings
 from decouple import config
 
 
-
 class Settings(BaseSettings):
     pg_dsn: PostgresDsn = config('DATABASE_URL')
     secret_key: str = config('SECRET_KEY')

@@ -18,9 +18,9 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-
-
 from app.models.user import *
+from app.models.task_model import *
+from app.models.blacklisted_model import *
 from app.database.base_class import Base
 target_metadata = Base.metadata
 
