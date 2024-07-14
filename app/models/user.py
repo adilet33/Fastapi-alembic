@@ -27,11 +27,17 @@ class User(TimeStampMixin, Base):
     password: Mapped[str] = mapped_column(String(255), nullable=False)
     refresh_token: Mapped[str] = mapped_column(String(255), nullable=True)
     is_active: Mapped[bool] = mapped_column(default=False)
-    tasks: Mapped[list["Task"]] = relationship(back_populates="user")
+    #tasks: Mapped[list["Task"]] = relationship(back_populates="user")
 
     @classmethod
     async def find_by_email(cls, db: AsyncSession, email: str):
         query = select(cls).where(cls.email == email)
+        result = await db.execute(query)
+        return result.scalars().first()
+    
+    @classmethod
+    async def find_by_username(cls, db: AsyncSession, username: str):
+        query = select(cls).where(cls.username == username)
         result = await db.execute(query)
         return result.scalars().first()
 

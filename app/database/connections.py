@@ -8,11 +8,11 @@ async_session_maker = async_sessionmaker(bind=engine, class_=AsyncSession)
 
 
 async def get_db():
-    db = async_session_maker()
-    try:
-        yield db
-    finally:
-        await db.close()
+    async with async_session_maker() as session:
+        try:
+            yield session
+        finally:
+            await session.close()    
 
 
 

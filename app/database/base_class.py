@@ -8,9 +8,12 @@ from fastapi import HTTPException, status
 
 class Base(AsyncAttrs, DeclarativeBase):
     async def save(self, db: AsyncSession):
+
         try:
             db.add(self)
-            return await db.commit()
+            await db.commit()
+            await db.refresh(self)
+            return self
         except SQLAlchemyError as ex:
             raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=repr(ex)) from ex
 
