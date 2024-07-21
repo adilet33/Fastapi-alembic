@@ -2,14 +2,14 @@ import logging
 import sys
 from contextlib import asynccontextmanager
 
-import uvicorn
 from fastapi import FastAPI
-from app.routes.auth import router
+from app.routes import auth, task
 
 
 app = FastAPI()
 
-app.include_router(router)
+app.include_router(auth.router)
+app.include_router(task.router)
 
 
 @app.get('/')

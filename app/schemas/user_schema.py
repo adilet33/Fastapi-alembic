@@ -25,20 +25,20 @@ class UserCreate(UserBase):
         return values
 
 
-class User(UserBase):
-    id: UUID4
+#class User(UserBase):
+    #id: UUID4
 
-    class Config:
-        from_attributes = True
+    #class Config:
+    #    from_attributes = True
 
     #@field_validator("id", pre=True)
     #def convert_to_str(cls, v, values, **kwargs):
     #    return str(v) if v else v
 
 
-class UserLogin(BaseModel):
-    email: EmailStr
-    password: str
+#class UserLogin(BaseModel):
+#    email: EmailStr
+#    password: str
 
 
 class UserResponse(BaseModel):
