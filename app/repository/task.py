@@ -27,7 +27,6 @@ async def get_tasks(user: User, db: AsyncSession):
     
     tasks = await Task.find_by_user(db=db, user=user)
 
-   
     return tasks
 
 
@@ -57,9 +56,8 @@ async def get_all_tasks_and_their_user(db: AsyncSession):
     return tasks
 
 
-async def update_task(user: User, body: TaskUpdate, task_id: uuid.UUID, db: AsyncSession):
 
-   
+async def update_task(user: User, body: TaskUpdate, task_id: uuid.UUID, db: AsyncSession):
 
     updated_task = update(Task).where(and_(Task.id == task_id, Task.user_id == user.id)).values(title=body.title, description=body.description).returning(Task)
 
@@ -75,6 +73,7 @@ async def update_task(user: User, body: TaskUpdate, task_id: uuid.UUID, db: Asyn
     
     return updated_tAsk
     
+
 
 async def update_task_orm_mode(user: User, body: TaskUpdate, task_id: uuid.UUID, db: AsyncSession):
     
