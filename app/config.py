@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    database_url: PostgresDsn = 'asyncpg://fastapi:fastapi@localhost:5433/fastapi'
+    database_url: PostgresDsn = 'postgresql+asyncpg://fastapi:fastapi@localhost:5433/fastapi'
     secret_key: str = 'secret_key'
     algorithm: str = 'HS256'
 
