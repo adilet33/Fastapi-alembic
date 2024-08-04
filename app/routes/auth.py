@@ -1,12 +1,11 @@
-from fastapi import APIRouter, Depends, status, Response
+from fastapi import APIRouter, Depends, status
 from fastapi.security import OAuth2PasswordRequestForm
 from app.database.connections import get_db
 from app.schemas.user_schema import UserResponse, UserCreate
-from app.schemas.token_schema import TokenPair
 from app.models.user import User
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.repository.user import create_user, create_token_for_user
-from app.services.auth import oauth2_scheme, add_token_to_blacklist
+from app.services.auth import add_token_to_blacklist
 from app.services.auth import get_current_user, get_token_of_auth_user
 
 

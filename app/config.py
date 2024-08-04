@@ -1,12 +1,11 @@
 from pydantic import PostgresDsn
 from pydantic_settings import BaseSettings
-from decouple import config
 
 
 class Settings(BaseSettings):
-    pg_dsn: PostgresDsn = config('DATABASE_URL')
-    secret_key_jwt: str = config('SECRET_KEY')
-    algorithm: str = config('ALGORITHM')
+    database_url: PostgresDsn = 'postgresql+asyncpg://fastapi:fastapi@localhost:5433/fastapi'
+    secret_key: str = 'secret_key'
+    algorithm: str = 'HS256'
 
 
 settings = Settings()

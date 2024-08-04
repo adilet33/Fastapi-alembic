@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 
 from app.config import settings
 
-engine = create_async_engine(str(settings.pg_dsn))
+engine = create_async_engine(str(settings.database_url))
 
 async_session_maker = async_sessionmaker(bind=engine, class_=AsyncSession)
 
