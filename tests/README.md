@@ -4,12 +4,17 @@ This directory contains unit tests for the FastAPI application.
 
 ## Running Tests Locally
 
-1. Install test dependencies:
+1. Install main application dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Install test dependencies:
 ```bash
 pip install -r requirements-test.txt
 ```
 
-2. Run tests:
+3. Run tests:
 ```bash
 pytest tests/ -v
 ```
