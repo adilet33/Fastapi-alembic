@@ -44,6 +44,13 @@ SECRET_KEY=your-secret-key-here
 ALGORITHM=HS256
 ```
 
+You can copy the `.env.example` file as a starting point:
+```bash
+cp .env.example .env
+```
+
+Then edit the `.env` file with your actual configuration values.
+
 ### Environment Variable Descriptions
 
 - **DATABASE_URL**: PostgreSQL connection string in the format `postgresql+asyncpg://username:password@host:port/database_name`
