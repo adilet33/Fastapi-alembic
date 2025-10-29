@@ -1,8 +1,8 @@
 import pytest
 from fastapi import HTTPException
-from fastapi.security import OAuth2PasswordRequestForm
 from app.repository.user import create_user, create_token_for_user
 from app.schemas.user_schema import UserCreate
+from app.exceptions.http_exceptions import BadRequestException
 
 
 class TestUserRepository:
@@ -83,8 +83,6 @@ class TestUserRepository:
     @pytest.mark.asyncio
     async def test_create_token_for_user_wrong_password(self, test_db, test_user):
         """Test creating token with wrong password."""
-        from app.exceptions.http_exceptions import BadRequestException
-        
         class MockForm:
             username = test_user.email
             password = "wrongpassword"
@@ -97,8 +95,6 @@ class TestUserRepository:
     @pytest.mark.asyncio
     async def test_create_token_for_user_nonexistent(self, test_db):
         """Test creating token for non-existent user."""
-        from app.exceptions.http_exceptions import BadRequestException
-        
         class MockForm:
             username = "nonexistent@example.com"
             password = "password123"
