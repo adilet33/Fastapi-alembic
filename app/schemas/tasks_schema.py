@@ -16,7 +16,6 @@ class TaskResponse(BaseModel):
 class TaskCreate(BaseModel):
     title: str
     description: str
-    user_id: UUID
 
 
 
