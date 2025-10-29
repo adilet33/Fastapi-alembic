@@ -8,6 +8,9 @@ on:
     branches:
       - '**'  # Run on all branches
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
