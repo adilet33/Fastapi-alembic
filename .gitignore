@@ -4,6 +4,7 @@
 .vscode/
 venv/
 __pycache__/
+*.pyc
 
 # Test coverage
 .coverage
