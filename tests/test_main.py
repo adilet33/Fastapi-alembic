@@ -1,19 +1,16 @@
-import os
-
-# Set environment variables before importing the app
-# PostgreSQL URL format is required by PostgresDsn, even for tests
-os.environ.setdefault("DATABASE_URL", "postgresql+asyncpg://test:test@localhost:5432/test_db")
-os.environ.setdefault("SECRET_KEY", "test-secret-key-for-testing-only")
-os.environ.setdefault("ALGORITHM", "HS256")
-
-from fastapi.testclient import TestClient
-from app.main import app
-
-client = TestClient(app)
+import pytest
+from httpx import AsyncClient
 
 
-def test_read_main():
-    """Test the root endpoint"""
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello world"}
+class TestMainApplication:
+    """Test main application endpoints."""
+    
+    @pytest.mark.asyncio
+    async def test_root_endpoint(self, client: AsyncClient):
+        """Test root endpoint."""
+        response = await client.get("/")
+        
+        assert response.status_code == 200
+        data = response.json()
+        assert "message" in data
+        assert data["message"] == "Hello world"

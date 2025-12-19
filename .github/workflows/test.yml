@@ -15,11 +15,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
-    env:
-      DATABASE_URL: postgresql+asyncpg://test:test@localhost:5432/test_db
-      SECRET_KEY: test-secret-key-for-testing-only
-      ALGORITHM: HS256
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -35,6 +30,13 @@ jobs:
         pip install -r requirements.txt
         pip install -r requirements-test.txt
     
+    - name: Load test environment variables
+      run: |
+        set -a
+        source .env.test
+        set +a
+    
     - name: Run tests
       run: |
+        export $(cat .env.test | xargs)
         pytest tests/ -v

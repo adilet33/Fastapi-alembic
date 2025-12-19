@@ -4,7 +4,7 @@ from decouple import config
 
 
 class Settings(BaseSettings):
-    pg_dsn: PostgresDsn = config('DATABASE_URL')
+    pg_dsn: str = config('DATABASE_URL')
     secret_key_jwt: str = config('SECRET_KEY')
     algorithm: str = config('ALGORITHM')
 

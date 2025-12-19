@@ -16,6 +16,7 @@ pip install -r requirements-test.txt
 
 3. Run tests:
 ```bash
+export $(cat .env.test | xargs)
 pytest tests/ -v
 ```
 
@@ -27,8 +28,8 @@ See `.github/workflows/test.yml` for the workflow configuration.
 ## Test Requirements
 
 Tests require the following environment variables:
-- `DATABASE_URL` - PostgreSQL connection string
+- `DATABASE_URL` - Database connection string (SQLite for tests)
 - `SECRET_KEY` - JWT secret key
 - `ALGORITHM` - JWT algorithm (default: HS256)
 
-These are automatically set in the test configuration.
+These are defined in `.env.test` and automatically loaded during test execution.
